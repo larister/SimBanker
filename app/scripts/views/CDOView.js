@@ -8,11 +8,12 @@ define([
     return Backbone.View.extend({
 
         initialize: function(){
-            
+            this.render();
         },
 
         render: function(){
-            this.$el.html(cdoTemplate());
+            this.$el = cdoTemplate();
+            return this;
         }
 
     });
