@@ -16,38 +16,36 @@ body {
 .mortgage-market {
     float: left;
     width: 20%;
-    height: 100%;
-    background-color: gray;
+    height: 60%;
 }
 
 .news-ticker {
-    padding: 10px 20px 15px;
-    background-color: #333;
+    padding: 0px 20px 15px;
+    background-color: #666;
     color: #FFF;
     float: left;
     top: 0;
-    width: 60%;
+    width: 55%;
     height: 15%;
 }
 
 .inv-main {
+    position: absolute;
     right: 0;
-    height:100%;
+    height:15%;
     background-color: purple;
 }
 
 #mmv-main {
     position: absolute;
     width: 20%;
-    height: 100%;
-    background-color: yellow;
+    height: 60%;
 }
 
 .banker {
     float: left;
-    width: 40%;
+    width: 35%;
     height: 85%;
-    background-color: blue;
 }
 
 .assets{
@@ -59,7 +57,7 @@ body {
 .income-counter {
     width: 100%;
     height: 5%;
-    background-color: pink;
+    background-color: green;
 }
 
 .mortgage-inventory {
@@ -87,10 +85,8 @@ body {
 }
 
 .banker-image-container{
-    margin-left:auto;
-    margin-right:auto;
-    width: 80%;
-    height: 80%;
+    padding-left: 30px;
+    height: 100%;
 }
 
 .banker-image-container img{
@@ -99,18 +95,22 @@ body {
 }
 
 .calculator-container{
-    width: 100%;
-    height: 100%;
+    position: absolute;
+    left: 5px;
+    bottom: 0px;
+    width: 25%;
 }
 
 .calculator-container img{
     width: 100%;
-    height: 100%;
 }
 
 .calculator-display{
     position:absolute;
-    left: 56%;
-    top: 70%;
-    color: black;
+    left: 40px;
+    bottom: 100px;
+    color: #222;
+    width: 250px;
+    text-align: right;
+    font-size: 40px;
 }
