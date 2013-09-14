@@ -76,6 +76,7 @@ body {
 }
 
 .calculator-container{
+    background-color: white;
     width: 60%;
     height: 40%;
     padding: 0 20%;
@@ -89,5 +90,5 @@ body {
 .calculator-display{
     position: absolute;
     left: 56%;
-    top: 41%;
+    top: 39%;
 }

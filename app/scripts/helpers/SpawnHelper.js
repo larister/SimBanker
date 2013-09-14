@@ -23,7 +23,7 @@ define(function() {
             this.houseCount--;
 
             var typeIndex = (Math.random() * 3);
-            typeIndex = Math.round(typeIndex);
+            typeIndex = Math.floor(typeIndex);
             console.log(typeIndex);
 
             this.trigger('spawnMortgage', this.houseTypes[typeIndex]);
