@@ -1,6 +1,8 @@
-/*global define */
-define([], function () {
+define(['views/MortgageMarketView'], function(MortgageMarketView) {
     'use strict';
 
-    return '\'Allo \'Allo!';
+    var mortgageMarketView = new MortgageMarketView({
+        el: $('.main-app')
+    });
+
 });
