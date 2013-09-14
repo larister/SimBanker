@@ -1,3 +1,3 @@
 <div class="house" data-type="{{ type }}" style="left: {{ left }}%; top: {{ top }}%;">
-    <img src="img/{{ type }}.png">
+    <img src="img/house/{{ type }}.png">
 </div>

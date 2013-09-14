@@ -1,9 +1,9 @@
 <div class="banker-image-container">
-    <img src="img/banker_placeholder.jpg"/>
+    <img src="img/banker/MainBanker1.png"/>
 </div>
 
 <div class="calculator-container">
-    <img src="img/calculator_placeholder.gif"/>
+    <img src="img/Calculator.png"/>
     <div class="calculator-display"></div>
 </div>
 
