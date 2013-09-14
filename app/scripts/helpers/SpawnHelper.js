@@ -1,14 +1,35 @@
 define(function() {
     'use strict';
 
-    return _(Backbone.Events).extend({
+    return Backbone.Model.extend({
 
         initialize: function(){
-            // start spawn timer
+        	this.brokers = 1;
+        	this.houseCount = 1000;
+        	this.houseTypes = [
+        	'house',
+        	'mansion',
+        	'castle',
+        	]
+            window.setTimeout(_.bind(this.spawnMortgage, this), this.nextSpawnTime());
+            
+        },
+
+        nextSpawnTime: function() {
+        	return this.brokers * Math.random() * 10000;
         },
 
         spawnMortgage: function(){
-            this.trigger('spawnMortgage', {type: 'castle'});
+        	this.houseCount--;
+            this.trigger('spawnMortgage', 'castle');
+            if (this.houseCount > 0) {
+            	window.setTimeout(_.bind(this.spawnMortgage, this), this.nextSpawnTime());	
+            };
+            
+        },
+
+        addBroker: function() {
+        	this.brokers++;
         }
 
     });

@@ -27,3 +27,9 @@ body {
     color: #000;
     padding: 0.2em 0;
 }
+
+#mmv-main {
+    width: 40%;
+    height: 500px;
+    position:relative;
+}
