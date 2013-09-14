@@ -1,10 +1,16 @@
-define(['mustache!house', 'mustache!mortgageMarketView'], function(houseTemplate, mmvTemplate) {
+define([
+    'SpawnHelper',
+    'mustache!house'
+], function(
+    SpawnHelper,
+    houseTemplate
+){
     'use strict';
 
     return Backbone.View.extend({
 
         initialize: function(){
-            this.render();
+            this.listenTo(SpawnHelper, 'spawnMortgage', this.showHouse);
             var self = this;
             setTimeout(function() {
             	console.log("timeout");
@@ -19,6 +25,10 @@ define(['mustache!house', 'mustache!mortgageMarketView'], function(houseTemplate
 
         generateMortgage: function(type) {
         	this.$el.find('.view-main').append(houseTemplate({type: type}));
+        },
+
+        showHouse: function(houseType){
+            // Show data house!
         }
 
     });
