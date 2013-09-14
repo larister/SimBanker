@@ -2,11 +2,13 @@ define([
     'views/MortgageMarketView',
     'views/MortgageInventoryView',
     'views/CDOInventoryView',
+    'views/BankerView',
     'mustache!base'
 ], function(
     MortgageMarketView,
     MortgageInventoryView,
     CDOInventoryView,
+    BankerView,
     baseTemplate
 ) {
     'use strict';
@@ -14,9 +16,20 @@ define([
     return Backbone.View.extend({
 
         initialize: function(){
+
+            this.banker = {
+                amount: 0
+            };
+
+            this.bankerView = new BankerView({
+                banker: this.banker
+            });
+
             this.mortgageMarketView = new MortgageMarketView();
             this.mortgageInventoryView = new MortgageInventoryView();
             this.cdoInventoryView = new CDOInventoryView();
+
+            this.listenTo(this.mortgageMarketView, 'boughtMortgage', this.onBoughtMortgage);
         },
 
         render: function(){
@@ -28,9 +41,17 @@ define([
             this.mortgageInventoryView.$el = this.$('.mortgage-inventory');
             this.mortgageInventoryView.render();
 
-
             this.cdoInventoryView.$el = this.$('.cdo-inventory');
             this.cdoInventoryView.render();
+
+            this.bankerView.$el = this.$('.banker');
+            this.bankerView.render();
+        },
+
+        onBoughtMortgage: function(type){
+            console.log('Bought Mortgage!', type);
+            this.banker.amount++;
+            this.bankerView.updateCalculatorDisplay();
         }
 
     });
