@@ -60,6 +60,12 @@ define([
 
             this.investorView.$el = this.$('.investors');
             this.investorView.render();
+
+            this.setIncomeTimer();
+        },
+
+        setIncomeTimer: function(){
+
         },
 
         onBoughtMortgage: function(type){
