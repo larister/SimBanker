@@ -13,7 +13,7 @@ define([
 
         initialize: function(){
             this.investorHelper = new InvestorDemandHelper();
-            // this.listenTo(this.investorHelper, 'triggerVisit', _(this.investorsAppear).bind(this));           
+            // this.listenTo(this.investorHelper, 'triggerVisit', _(this.investorsAppear).bind(this));
         },
 
         render: function(){
@@ -36,7 +36,7 @@ define([
         },
 
         investorsDisappear: function() {
-            
+
         },
 
         moveLeft: function(investor){
@@ -58,5 +58,4 @@ define([
 
     });
 });
-		
-		
+
