@@ -3,12 +3,14 @@ define([
     'views/MortgageInventoryView',
     'views/CDOInventoryView',
     'views/BankerView',
+    'helpers/MortgageHelper',
     'mustache!base'
 ], function(
     MortgageMarketView,
     MortgageInventoryView,
     CDOInventoryView,
     BankerView,
+    MortgageHelper,
     baseTemplate
 ) {
     'use strict';
@@ -49,8 +51,10 @@ define([
         },
 
         onBoughtMortgage: function(type){
-            console.log('Bought Mortgage!', type);
-            this.banker.amount++;
+            var mortgageModel = MortgageHelper.createModel(type);
+
+            this.banker.amount += mortgageModel.get('valuation');
+
             this.bankerView.updateCalculatorDisplay();
         }
 
