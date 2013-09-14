@@ -22,21 +22,26 @@ define([
         },
 
         showHouse: function(houseType){
-        	console.log(houseType);
+        	var self = this;
             var v = this.$el.find('.view-main');
-
-
             var left = (Math.random() * 100) + 1;
             var top = (Math.random() * 100) + 1;
 
             var house = houseTemplate({type: houseType, left: left - 5, top: top - 5});
 
-            house.click(this.trigger('clickedHouse', houseType));
+            house.click(function() {self.trigger('clickedHouse', houseType)});
+
             window.setTimeout(function() {
-            	house.remove();
+            	self.removeHouse(house);
             }, 3000);
 
             v.append(house);
+            house.animate({opacity: 1}, 100);
+        },
+
+        removeHouse: function(house) {
+            	house.animate({opacity: 0}, 100);
+            	house.remove();
         }
 
     });
