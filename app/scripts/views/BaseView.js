@@ -56,6 +56,8 @@ define([
             this.banker.amount += mortgageModel.get('valuation');
 
             this.bankerView.updateCalculatorDisplay();
+
+            this.mortgageInventoryView.collection.add(mortgageModel);
         }
 
     });
