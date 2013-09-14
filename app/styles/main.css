@@ -51,6 +51,10 @@ body {
     float: left;
 }
 
+.mortgage-inventory .mortgage {
+    float: left;
+}
+
 .house {
     position: absolute;
     width: 10%;

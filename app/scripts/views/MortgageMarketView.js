@@ -34,19 +34,22 @@ define([
             }, 3000);
 
             v.append(house);
-            house.animate({opacity: 1}, 100);
+            house.animate({opacity: 1}, 500);
         },
 
         houseClicked: function(event){
             var house = $(event.target).closest('.house');
 
             this.trigger('boughtMortgage', house.data('type'));
-            this.removeHouse(house);
+            house.remove();
         },
 
         removeHouse: function(house) {
-            house.animate({opacity: 0}, 100);
-            house.remove();
+            var boundHouseRemove = _(house.remove).bind(house);
+
+            house.animate({opacity: 0}, 500, function(){
+                boundHouseRemove();
+            });
         }
 
     });
