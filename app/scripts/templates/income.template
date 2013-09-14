@@ -1,0 +1,3 @@
+<div class="income-container">
+    Income: <span class="income-increment"></span>
+</div>
