@@ -12,7 +12,7 @@ define([
     return Backbone.View.extend({
 
         initialize: function(){
-        	this.spawnHelper = new SpawnHelper();
+            this.spawnHelper = new SpawnHelper();
             this.listenTo(this.spawnHelper, 'spawnMortgage', this.showHouse);
         },
 
@@ -22,7 +22,7 @@ define([
         },
 
         showHouse: function(houseType){
-        	var self = this;
+            var self = this;
             var v = this.$el.find('.view-main');
             var left = (Math.random() * 100) + 1;
             var top = (Math.random() * 100) + 1;
@@ -32,7 +32,7 @@ define([
             house.click(function() {self.trigger('clickedHouse', houseType)});
 
             window.setTimeout(function() {
-            	self.removeHouse(house);
+                self.removeHouse(house);
             }, 3000);
 
             v.append(house);
@@ -40,8 +40,8 @@ define([
         },
 
         removeHouse: function(house) {
-            	house.animate({opacity: 0}, 100);
-            	house.remove();
+                house.animate({opacity: 0}, 100);
+                house.remove();
         }
 
     });
