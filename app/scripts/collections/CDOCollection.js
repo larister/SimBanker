@@ -1,13 +1,15 @@
 define([
     'models/CDOModel'
     ], 
-    function() {
+    function(
+        CDOModel
+    ) {
     'use strict';
 
     return Backbone.Collection.extend({
 
         model: CDOModel,
-        
+
         initialize: function(){
             
         },

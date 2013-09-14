@@ -2,7 +2,8 @@ define([
     'mustache!mortgageInventory',
     'collections/MortgageCollection'
 ], function(
-    mortgageInventoryTemplate
+    mortgageInventoryTemplate,
+    MortgageCollection
 ){
     'use strict';
 
