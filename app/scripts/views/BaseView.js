@@ -4,9 +4,6 @@ define([
     'views/MortgageInventoryView',
     'views/CDOInventoryView',
     'views/BankerView',
-    'views/MortgageInventoryView',
-    'views/CDOInventoryView',
-    'views/BankerView',
     'views/InvestorsView',
     'helpers/MortgageHelper',
     'mustache!base'

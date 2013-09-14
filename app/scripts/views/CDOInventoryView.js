@@ -12,10 +12,10 @@ define([
     return Backbone.View.extend({
 
         initialize: function(){
-            
+
             this.codViews = [];
 
-            this.cdos = new CDOCollection();
+            this.collection = new CDOCollection();
 
             this.listenTo(this.collection, 'add', this.add);
             this.listenTo(this.collection, 'remove', this.remove);
@@ -30,7 +30,7 @@ define([
             _(this.cdoViews).each(function(mv) {
               self.main.append(mv.render().el);
             });
- 
+
             return this;
         },
 
@@ -42,8 +42,8 @@ define([
 
         remove: function(cdo) {
             var viewToRemove = _(this.  cdoViews).select(
-                function(mv) { 
-                    return mv.model === cdo; 
+                function(mv) {
+                    return mv.model === cdo;
                 })[0];
 
             this.cdoViews = _(this.cdoViews).without(viewToRemove);
