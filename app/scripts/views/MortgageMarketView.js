@@ -13,23 +13,21 @@ define([
 
         initialize: function(){
             this.spawnHelper = new SpawnHelper();
-            this.listenTo(this.spawnHelper, 'spawnMortgage', this.showHouse);
+            this.listenTo(this.spawnHelper, 'spawnMortgage', _(this.showHouse).bind(this));
         },
 
         render: function(){
             this.$el.append(mmvTemplate());
-
+            this.$el.on('click', '.house', _(this.houseClicked).bind(this));
         },
 
         showHouse: function(houseType){
             var self = this;
-            var v = this.$el.find('.view-main');
-            var left = (Math.random() * 100) + 1;
-            var top = (Math.random() * 100) + 1;
+            var v = this.$('.view-main');
+            var left = (Math.random() * 90) + 5;
+            var top = (Math.random() * 90) + 5;
 
             var house = houseTemplate({type: houseType, left: left - 5, top: top - 5});
-
-            house.click(function() {self.trigger('clickedHouse', houseType)});
 
             window.setTimeout(function() {
                 self.removeHouse(house);
@@ -39,9 +37,16 @@ define([
             house.animate({opacity: 1}, 100);
         },
 
+        houseClicked: function(event){
+            var house = $(event.target).closest('.house');
+
+            this.trigger('clickedHouse', house.data('type'));
+            this.removeHouse(house);
+        },
+
         removeHouse: function(house) {
-                house.animate({opacity: 0}, 100);
-                house.remove();
+            house.animate({opacity: 0}, 100);
+            house.remove();
         }
 
     });
