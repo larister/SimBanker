@@ -1,7 +1,9 @@
 define([
     'models/MortgageModel'
     ], 
-    function() {
+    function(
+        MortgageModel
+    ) {
     'use strict';
 
     return Backbone.Collection.extend({
