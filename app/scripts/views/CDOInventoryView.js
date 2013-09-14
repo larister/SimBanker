@@ -15,7 +15,7 @@ define([
             
             this.codViews = [];
 
-            this.cdos = new CDOCollection();
+            this.collection = new CDOCollection();
 
             this.listenTo(this.collection, 'add', this.add);
             this.listenTo(this.collection, 'remove', this.remove);
