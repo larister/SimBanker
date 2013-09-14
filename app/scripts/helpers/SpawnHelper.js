@@ -25,7 +25,6 @@ define([
 
             var typeIndex = (Math.random() * 3);
             typeIndex = Math.floor(typeIndex);
-            console.log(typeIndex);
 
             this.trigger('spawnMortgage', this.houseTypes[typeIndex]);
             if (this.houseCount > 0) {
