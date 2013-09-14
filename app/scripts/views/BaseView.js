@@ -1,8 +1,10 @@
 define([
     'views/MortgageMarketView',
+    'views/NewsTickerView',
     'mustache!base'
 ], function(
     MortgageMarketView,
+    NewsTickerView,
     baseTemplate
 ) {
     'use strict';
@@ -11,6 +13,7 @@ define([
 
         initialize: function(){
             this.mortgageMarketView = new MortgageMarketView();
+            this.newsTickerView = new NewsTickerView();
         },
 
         render: function(){
@@ -19,6 +22,9 @@ define([
             this.mortgageMarketView.$el = this.$('.mortgage-market');
 
             this.mortgageMarketView.render();
+
+            this.newsTickerView.$el = this.$('.news-ticker');
+            this.newsTickerView.render();
         }
 
     });
