@@ -1,11 +1,7 @@
 define([
-    'helpers/SpawnHelper',
-    'mustache!house',
-    'mustache!mortgageMarketView'
+    'mustache!mortgage'
 ], function(
-    SpawnHelper,
-    houseTemplate,
-    mmvTemplate
+    mortgage
 ){
     'use strict';
 
