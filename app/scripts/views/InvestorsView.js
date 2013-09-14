@@ -13,25 +13,26 @@ define([
 
         initialize: function(){
             this.investorHelper = new InvestorDemandHelper();
-            this.listenTo(this.investorHelper, 'triggerVisit', _(this.investorsAppear).bind(this));           
+            // this.listenTo(this.investorHelper, 'triggerVisit', _(this.investorsAppear).bind(this));           
         },
 
         render: function(){
             this.$el.append(investorsViewTemplate());
+            this.investorsAppear();
         },
 
         investorsAppear: function(investorType){
             var self = this;
             var v = this.$('.inv-main');
 
-            var investor = investorTemplate({type: investorType, right: -100});
+            var investor = investorTemplate({type: 'SafeInvestor', right: -100});
 
-            window.setTimeout(function() {
-                self.moveRight(investor);
-            }, 3000);
+            // // window.setTimeout(function() {
+            // //     self.moveRight(investor);
+            // // }, 3000);
 
             v.append(investor);
-            investor.moveLeft();
+            this.moveLeft(investor);
         },
 
         investorsDisappear: function() {
@@ -39,9 +40,13 @@ define([
         },
 
         moveLeft: function(investor){
-            investor.animate({opacity: 1}, 100);
-            investor.style.right = parseInt(investor.style.right) + 10 + 'px';
-            animate = setTimeout(moveLeft,20); // call moveLeft in 20msec
+            var self = this;
+
+            debugger;
+
+            investor.slideDown();
+
+            // investor.animate({left: "+=100px"}, 2000);
 
             window.setTimeout(function() {
                 self.moveRight(investor);
@@ -49,9 +54,7 @@ define([
         },
 
         moveRight: function(investor){
-            investor.style.left = parseInt(investor.style.left) + 10 + 'px';
-            animate = setTimeout(moveRight,20); // call moveRight in 20msec
-            investor.animate({opacity: 0}, 100);
+            // investor.animate({left: "10px"}, 2000);
             investor.remove();
         }
 
