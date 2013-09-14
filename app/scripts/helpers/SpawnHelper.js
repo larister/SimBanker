@@ -1,4 +1,8 @@
-define(function() {
+define([
+    'helpers/MortgageHelper',
+], function(
+    MortgageHelper
+) {
     'use strict';
 
     return Backbone.Model.extend({
@@ -6,11 +10,8 @@ define(function() {
         initialize: function(){
             this.brokers = 1;
             this.houseCount = 1000;
-            this.houseTypes = [
-                'house',
-                'mansion',
-                'castle',
-            ];
+            this.houseTypes = _(MortgageHelper.mortgageTypes).pluck('type');
+
             window.setTimeout(_.bind(this.spawnMortgage, this), this.nextSpawnTime());
 
         },

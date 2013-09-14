@@ -4,7 +4,11 @@ define([
     'views/MortgageInventoryView',
     'views/CDOInventoryView',
     'views/BankerView',
+    'views/MortgageInventoryView',
+    'views/CDOInventoryView',
+    'views/BankerView',
     'views/InvestorsView',
+    'helpers/MortgageHelper',
     'mustache!base'
 ], function(
     MortgageMarketView,
@@ -13,6 +17,7 @@ define([
     CDOInventoryView,
     BankerView,
     InvestorsView,
+    MortgageHelper,
     baseTemplate
 ) {
     'use strict';
@@ -61,9 +66,13 @@ define([
         },
 
         onBoughtMortgage: function(type){
-            console.log('Bought Mortgage!', type);
-            this.banker.amount++;
+            var mortgageModel = MortgageHelper.createModel(type);
+
+            this.banker.amount += mortgageModel.get('valuation');
+
             this.bankerView.updateCalculatorDisplay();
+
+            this.mortgageInventoryView.collection.add(mortgageModel);
         }
 
     });

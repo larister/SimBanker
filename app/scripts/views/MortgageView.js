@@ -12,7 +12,8 @@ define([
         },
 
         render: function(){
-            this.$el.html(mortgageTemplate());
+            this.$el = mortgageTemplate();
+            return this.$el;
         }
 
     });
