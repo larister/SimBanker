@@ -1,0 +1,3 @@
+<div class="investor" style="right: {{ right }}">
+    <img src="img/{{ type }}.png">
+</div>
