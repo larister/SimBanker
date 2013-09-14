@@ -1,29 +1,43 @@
+html {
+    height: 100%;
+}
+
 body {
     background: #fafafa;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #333;
+    height: 100%;
 }
 
-.hero-unit {
-    margin: 50px auto 0 auto;
-    width: 300px;
-    font-size: 18px;
-    font-weight: 200;
-    line-height: 30px;
-    background-color: #eee;
-    border-radius: 6px;
-    padding: 60px;
+.main-app {
+    width: 100%;
+    height: 100%;
 }
 
-.hero-unit h1 {
-    font-size: 60px;
-    line-height: 1;
-    letter-spacing: -1px;
+.mortgage-market {
+    width: 30%;
+    height: 100%;
+    border: 1px solid black;
+    float: left;
 }
 
-.browsehappy {
-    margin: 0.2em 0;
-    background: #ccc;
-    color: #000;
-    padding: 0.2em 0;
+.news-ticker {
+    width: 60%;
+    height: 10%;
+    border: 1px solid green;
+    float: left;
+}
+
+.banker {
+    width: 60%;
+    height: 60%;
+    border: 1px solid blue;
+    float: left;
+}
+
+.mortgage-inventory {
+    width: 60%;
+    height: 30%;
+    border: 1px solid red;
+    float: left;
 }
