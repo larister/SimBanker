@@ -1,6 +1,7 @@
 define([
     'views/MortgageMarketView',
     'views/NewsTickerView',
+    'views/IncomeView',
     'views/MortgageInventoryView',
     'views/CDOInventoryView',
     'views/BankerView',
@@ -10,6 +11,7 @@ define([
 ], function(
     MortgageMarketView,
     NewsTickerView,
+    IncomeView,
     MortgageInventoryView,
     CDOInventoryView,
     BankerView,
@@ -27,18 +29,26 @@ define([
                 amount: 0
             };
 
-            this.bankerView = new BankerView({
-                banker: this.banker
-            });
+            this.income = {
+                increment: 0
+            };
+
 
             this.mortgageMarketView = new MortgageMarketView();
             this.newsTickerView = new NewsTickerView();
+            this.investorView = new InvestorsView();
             this.mortgageInventoryView = new MortgageInventoryView();
             this.cdoInventoryView = new CDOInventoryView({
                 banker: this.banker,
                 mortgageInventory: this.mortgageInventoryView.collection
             });
-            this.investorView = new InvestorsView();
+
+            this.bankerView = new BankerView({
+                banker: this.banker
+            });
+            this.incomeView = new IncomeView({
+                income: this.income
+            });
 
             this.listenTo(this.mortgageMarketView, 'boughtMortgage', this.onBoughtMortgage);
         },
@@ -55,11 +65,14 @@ define([
             this.bankerView.$el = this.$('.banker');
             this.bankerView.render();
 
+            this.incomeView.$el = this.$('.income-counter');
+            this.incomeView.render();
+
             this.mortgageInventoryView.$el = this.$('.mortgage-inventory');
             this.mortgageInventoryView.render();
 
             this.cdoInventoryView.$el = this.$('.cdo-inventory');
-            this.cdoInventoryView.render();         
+            this.cdoInventoryView.render();
 
             this.investorView.$el = this.$('.investors');
             this.investorView.render();
