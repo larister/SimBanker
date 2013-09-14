@@ -2,7 +2,7 @@
 <div class="news-ticker"></div>
 <div class="banker"></div>
 <div class="assets">
-    <div class="income-counter">Hello</div>
+    <div class="income-counter"></div>
     <div class="mortgage-inventory"></div>
     <div class="cdo-inventory"></div>
 </div>

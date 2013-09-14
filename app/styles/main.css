@@ -27,6 +27,11 @@ body {
     top: 0;
     width: 55%;
     height: 15%;
+    overflow: hidden;
+}
+
+.news-update > p {
+    margin: 0;
 }
 
 .inv-main {
@@ -113,4 +118,17 @@ body {
     width: 250px;
     text-align: right;
     font-size: 40px;
+}
+
+.mortgage {
+    float: left;
+}
+
+.investors {
+    float: left;
+    height: 100%;
+}
+
+#buy-cdo {
+    cursor: pointer;
 }
