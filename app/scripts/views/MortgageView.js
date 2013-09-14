@@ -8,12 +8,12 @@ define([
     return Backbone.View.extend({
 
         initialize: function(){
-            
+            this.render();
         },
 
         render: function(){
             this.$el = mortgageTemplate();
-            return this.$el;
+            return this;
         }
 
     });

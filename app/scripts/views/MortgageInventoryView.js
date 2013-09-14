@@ -12,9 +12,7 @@ define([
     return Backbone.View.extend({
 
         initialize: function(){
-
-            var self = this;
-
+            
             this.mortgageViews = [];
 
             this.collection = new MortgageCollection();
@@ -22,9 +20,6 @@ define([
             this.listenTo(this.collection, 'add', this.add);
             this.listenTo(this.collection, 'remove', this.remove);
 
-            window.setTimeout(function() {
-                self.collection.add({});
-            }, 3000);
         },
 
         render: function(){
