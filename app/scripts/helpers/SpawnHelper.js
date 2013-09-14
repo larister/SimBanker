@@ -21,7 +21,12 @@ define(function() {
 
         spawnMortgage: function(){
         	this.houseCount--;
-            this.trigger('spawnMortgage', 'castle');
+
+        	var typeIndex = (Math.random() * 3);
+        	typeIndex = Math.round(typeIndex);
+        	console.log(typeIndex);
+
+            this.trigger('spawnMortgage', this.houseTypes[typeIndex]);
             if (this.houseCount > 0) {
             	window.setTimeout(_.bind(this.spawnMortgage, this), this.nextSpawnTime());	
             };

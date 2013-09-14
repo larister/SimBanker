@@ -29,7 +29,14 @@ define([
             var left = (Math.random() * 100) + 1;
             var top = (Math.random() * 100) + 1;
 
-            v.append(houseTemplate({type: houseType, left: left, top: top}));
+            var house = houseTemplate({type: houseType, left: left - 5, top: top - 5});
+
+            house.click(this.trigger('clickedHouse', houseType));
+            window.setTimeout(function() {
+            	house.remove();
+            }, 3000);
+
+            v.append(house);
         }
 
     });
