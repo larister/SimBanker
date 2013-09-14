@@ -1,5 +1,5 @@
 define([
-    'SpawnHelper',
+    'helpers/SpawnHelper',
     'mustache!house'
 ], function(
     SpawnHelper,

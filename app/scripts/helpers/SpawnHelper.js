@@ -1,7 +1,7 @@
 define(function() {
     'use strict';
 
-    return _(Backbone.Events, {
+    return _(Backbone.Events).extend({
 
         initialize: function(){
             // start spawn timer
