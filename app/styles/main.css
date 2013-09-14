@@ -29,6 +29,11 @@ body {
     height: 10%;
     border: 1px solid green;
     float: left;
+    overflow: hidden;
+}
+
+.news-update > p {
+    margin: 0;
 }
 
 #mmv-main {
@@ -91,4 +96,13 @@ body {
     position: absolute;
     left: 56%;
     top: 39%;
+}
+
+.mortgage {
+    float: left;
+}
+
+.investors {
+    float: left;
+    height: 100%;
 }
