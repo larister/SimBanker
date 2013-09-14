@@ -46,17 +46,17 @@ define([
             this.mortgageMarketView.$el = this.$('.mortgage-market');
             this.mortgageMarketView.render();
 
-            this.mortgageInventoryView.$el = this.$('.mortgage-inventory');
-            this.mortgageInventoryView.render();
-
-            this.cdoInventoryView.$el = this.$('.cdo-inventory');
-            this.cdoInventoryView.render();
-
             this.newsTickerView.$el = this.$('.news-ticker');
             this.newsTickerView.render();
 
             this.bankerView.$el = this.$('.banker');
             this.bankerView.render();
+
+            this.mortgageInventoryView.$el = this.$('.mortgage-inventory');
+            this.mortgageInventoryView.render();
+
+            this.cdoInventoryView.$el = this.$('.cdo-inventory');
+            this.cdoInventoryView.render();         
 
             this.investorView.$el = this.$('.investors');
             this.investorView.render();

@@ -42,8 +42,6 @@ define([
         moveLeft: function(investor){
             var self = this;
 
-            debugger;
-
             investor.slideDown();
 
             // investor.animate({left: "+=100px"}, 2000);

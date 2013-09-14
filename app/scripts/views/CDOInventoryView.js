@@ -13,24 +13,26 @@ define([
 
         initialize: function(){
 
-            this.codViews = [];
+            this.cdoViews = [];
 
             this.collection = new CDOCollection();
 
             this.listenTo(this.collection, 'add', this.add);
             this.listenTo(this.collection, 'remove', this.remove);
 
+            
+
         },
 
         render: function(){
             var self = this;
-            this.main = cdoInventoryTemplate();
-            this.$el.append(this.main);
+            var tpl = cdoInventoryTemplate();
+            this.$el.append(tpl);
+            this.main = tpl.find('#cdoi-main');
             this.main.empty();
             _(this.cdoViews).each(function(mv) {
               self.main.append(mv.render().el);
             });
-
             return this;
         },
 

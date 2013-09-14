@@ -3,12 +3,8 @@ html {
 }
 
 body {
-    background-image: url('../img/bg.gif');
-    background-repeat:no-repeat;
-    background-size: 100%;
-    margin: 0;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #333;
+    color: #FFF;
     height: 100%;
 }
 
@@ -18,17 +14,18 @@ body {
 }
 
 .mortgage-market {
+    float: left;
     width: 20%;
     height: 100%;
-    border: 1px solid black;
-    float: left;
+    background-color: gray;
 }
 
 .news-ticker {
-    width: 60%;
-    height: 10%;
-    border: 1px solid green;
     float: left;
+    top: 0;
+    width: 60%;
+    background-color: green;
+    height: 15%;
     overflow: hidden;
 }
 
@@ -37,23 +34,25 @@ body {
 }
 
 #mmv-main {
-    width: 100%;
+    position: absolute;
+    width: 20%;
     height: 100%;
-    position:relative;
+    background-color: yellow;
 }
 
 .banker {
-    width: 60%;
-    height: 60%;
-    border: 1px solid blue;
     float: left;
+    width: 40%;
+    height: 85%;
+    background-color: blue;
 }
 
 .mortgage-inventory {
-    width: 60%;
-    height: 30%;
-    border: 1px solid red;
+    bottom:0;
     float: left;
+    width: 20%;
+    height: 85%;
+    background-color: red;
 }
 
 .mortgage-inventory .mortgage {
@@ -62,8 +61,7 @@ body {
 
 .house {
     position: absolute;
-    width: 10%;
-    height: 10%;
+    width: 40%;
     opacity: 0;
     cursor: pointer;
 }

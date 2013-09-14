@@ -8,9 +8,9 @@ define([
     return {
 
         mortgageTypes: [
-            {type: 'house', valuation: 1},
-            {type: 'mansion', valuation: 2},
-            {type: 'castle', valuation: 3}
+            {type: 'MortgageIcon1', valuation: 1},
+            {type: 'MortgageIcon2', valuation: 2},
+            {type: 'MortgageIcon3', valuation: 3}
         ],
 
         createModel: function(mortgageType){
