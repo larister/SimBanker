@@ -1,0 +1,1 @@
+<p>{{ headline }} <br/> <i>"{{ summary }}"</i> <br/> <b>~{{ author }}</b></p>

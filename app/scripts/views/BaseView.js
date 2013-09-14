@@ -1,15 +1,22 @@
 define([
     'views/MortgageMarketView',
+    'views/NewsTickerView',
     'views/MortgageInventoryView',
     'views/CDOInventoryView',
     'views/BankerView',
+    'views/MortgageInventoryView',
+    'views/CDOInventoryView',
+    'views/BankerView',
+    'views/InvestorsView',
     'helpers/MortgageHelper',
     'mustache!base'
 ], function(
     MortgageMarketView,
+    NewsTickerView,
     MortgageInventoryView,
     CDOInventoryView,
     BankerView,
+    InvestorsView,
     MortgageHelper,
     baseTemplate
 ) {
@@ -28,8 +35,10 @@ define([
             });
 
             this.mortgageMarketView = new MortgageMarketView();
+            this.newsTickerView = new NewsTickerView();
             this.mortgageInventoryView = new MortgageInventoryView();
             this.cdoInventoryView = new CDOInventoryView();
+            this.investorView = new InvestorsView();
 
             this.listenTo(this.mortgageMarketView, 'boughtMortgage', this.onBoughtMortgage);
         },
@@ -46,8 +55,14 @@ define([
             this.cdoInventoryView.$el = this.$('.cdo-inventory');
             this.cdoInventoryView.render();
 
+            this.newsTickerView.$el = this.$('.news-ticker');
+            this.newsTickerView.render();
+
             this.bankerView.$el = this.$('.banker');
             this.bankerView.render();
+
+            this.investorView.$el = this.$('.investors');
+            this.investorView.render();
         },
 
         onBoughtMortgage: function(type){
@@ -56,6 +71,8 @@ define([
             this.banker.amount += mortgageModel.get('valuation');
 
             this.bankerView.updateCalculatorDisplay();
+
+            this.mortgageInventoryView.collection.add(mortgageModel);
         }
 
     });
