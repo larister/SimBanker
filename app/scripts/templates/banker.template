@@ -1,0 +1,9 @@
+<div class="banker-image-container">
+    <img src="img/banker_placeholder.jpg"/>
+</div>
+
+<div class="calculator-container">
+    <img src="img/calculator_placeholder.gif"/>
+    <div class="calculator-display"></div>
+</div>
+

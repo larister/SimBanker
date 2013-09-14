@@ -27,11 +27,8 @@ define([
         	//if avgHousePrice >= item.housePrice pop item from array and display in newsItem template
         	var nextNewsItem;
 			for (var i=0;i<this.items.length;i++) {
-				console.log(this.items.length);
-				console.log(this.items[0]);
 				nextNewsItem = this.items[i];
 				this.items.splice(i, 1);
-				console.log(this.items.length);
 				break;
 			}
 
