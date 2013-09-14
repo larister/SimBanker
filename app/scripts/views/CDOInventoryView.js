@@ -1,14 +1,16 @@
 define([
-    'mustache!cdoInventory'
+    'mustache!cdoInventory',
+    'collections/CDOCollection'
 ], function(
-    cdoInventoryTemplate
+    cdoInventoryTemplate,
+    CDOCollection
 ){
     'use strict';
 
     return Backbone.View.extend({
 
         initialize: function(){
-            
+            this.cdos = new CDOCollection();
         },
 
         render: function(){

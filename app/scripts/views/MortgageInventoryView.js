@@ -1,5 +1,6 @@
 define([
-    'mustache!mortgageInventory'
+    'mustache!mortgageInventory',
+    'collections/MortgageCollection'
 ], function(
     mortgageInventoryTemplate
 ){
@@ -8,7 +9,7 @@ define([
     return Backbone.View.extend({
 
         initialize: function(){
-            
+            this.mortgages = new MortgageCollection();
         },
 
         render: function(){

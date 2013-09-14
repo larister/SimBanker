@@ -1,19 +1,19 @@
 define([
-    'models/MortgageModel'
+    'models/CDOModel'
     ], 
     function() {
     'use strict';
 
     return Backbone.Collection.extend({
 
-        model: MortgageModel,
-
+        model: CDOModel,
+        
         initialize: function(){
             
         },
 
         render: function(){
-
+            
         }
 
     });
