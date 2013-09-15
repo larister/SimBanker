@@ -77,16 +77,24 @@ define([
             this.investorView.$el = this.$('.investors');
             this.investorView.render();
 
-            this.setIncomeTimer();
+            this.setTicker();
         },
 
-        setIncomeTimer: function(){
-            setTimeout(_(function() {
-                this.banker.amount += this.income.increment;
-                this.bankerView.updateCalculatorDisplay();
+        setTicker: function(){
+            if(this.ticker){
+                clearTimeout(this.ticker);
+            }
 
-                this.setIncomeTimer();
-            }).bind(this), 1000);
+            this.ticker = setTimeout(_(this.onTick).bind(this), 1000);
+        },
+
+        onTick: function(){
+            this.banker.amount += this.income.increment;
+
+            this.bankerView.updateBankerImage();
+            this.bankerView.updateCalculatorDisplay();
+
+            this.setTicker();
         },
 
         onBoughtMortgage: function(type){
