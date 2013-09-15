@@ -41,7 +41,7 @@ define([
 
             this.mortgageMarketView = new MortgageMarketView();
             this.newsTickerView = new NewsTickerView();
-            
+
             this.mortgageInventoryView = new MortgageInventoryView();
             this.cdoInventoryView = new CDOInventoryView({
                 banker: this.banker,
@@ -66,6 +66,7 @@ define([
             this.listenTo(this.bankerView, 'broughtUpgrade', this.onBroughtUpgrade);
             this.listenTo(this.investorView, 'soldCDO', this.onSoldCDO);
             this.listenTo(this.bankerView, 'gotLoan', this.onGotLoan);
+            this.listenTo(this.mortgageInventoryView.collection, 'defaulted', this.onDefault);
         },
 
         render: function(){
@@ -111,6 +112,8 @@ define([
 
             this.banker.amount += (this.income.increment - this.income.loan);
 
+            this.mortgageInventoryView.collection.mortgageDefault();
+
             this.bankerView.updateBankerImage();
             this.bankerView.updateCalculatorDisplay();
             this.bankerView.updateResearchPanel();
@@ -129,7 +132,7 @@ define([
                 this.income.increment += mortgageModel.get('valuation');
                 this.incomeView.updateIncomeIncrement();
 
-                this.mortgageInventoryView.collection.add(mortgageModel);                
+                this.mortgageInventoryView.collection.add(mortgageModel);
                 mortgage.remove();
             }else {
                 console.log("NO");
@@ -154,6 +157,14 @@ define([
             });
             this.income.increment -= total;
             this.incomeView.updateIncomeIncrement();
+        },
+
+        onDefault: function(mortgage){
+            this.income.increment -= mortgage.valuation;
+            this.incomeView.updateIncomeIncrement();
+
+            this.banker.amount += mortgage.valuation;
+            this.bankerView.updateCalculatorDisplay();
         }
 
     });

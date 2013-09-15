@@ -31,7 +31,7 @@ define([
             _(this.mortgageViews).each(function(mv) {
                 self.main.append(mv.render().$el);
             });
- 
+
             return this;
         },
 
@@ -42,15 +42,14 @@ define([
         },
 
         remove: function(mortgage) {
-            var viewToRemove = _(this.mortgageViews).select(
-                function(mv) { 
-                    return mv.model === mortgage; 
-                })[0];
+            var viewToRemove = _(this.mortgageViews).find(
+                function(mv) {
+                    return mv.model === mortgage;
+                });
 
             this.mortgageViews = _(this.mortgageViews).without(viewToRemove);
 
-            $(viewToRemove.el).remove();
-            this.render();
+            viewToRemove.remove();
         }
 
     });
