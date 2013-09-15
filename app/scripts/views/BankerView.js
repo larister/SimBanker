@@ -7,9 +7,9 @@ define([
 ){
     'use strict';
 
-    var MEDIUM_BANKER_THRESHOLD = 10,
-        FAT_BANKER_THRESHOLD = 20,
-        EVIL_BANKER_THRESHOLD = 30;
+    var MEDIUM_BANKER_THRESHOLD = 5000,
+        FAT_BANKER_THRESHOLD = 20000,
+        EVIL_BANKER_THRESHOLD = 50000;
 
     function formatNaturalNumber(number){
 
