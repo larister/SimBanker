@@ -140,6 +140,7 @@ body {
 .investor {
     position: relative;
     left: 300px;
+    cursor: pointer;
 }
 
 #buy-cdo {

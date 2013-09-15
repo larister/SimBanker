@@ -36,7 +36,7 @@ define([
 
             this.mortgageMarketView = new MortgageMarketView();
             this.newsTickerView = new NewsTickerView();
-            this.investorView = new InvestorsView();
+            
             this.mortgageInventoryView = new MortgageInventoryView();
             this.cdoInventoryView = new CDOInventoryView({
                 banker: this.banker,
@@ -48,6 +48,10 @@ define([
             });
             this.incomeView = new IncomeView({
                 income: this.income
+            });
+
+            this.investorView = new InvestorsView({
+                cdoInventory: this.cdoInventoryView.collection
             });
 
             this.listenTo(this.mortgageMarketView, 'boughtMortgage', this.onBoughtMortgage);
