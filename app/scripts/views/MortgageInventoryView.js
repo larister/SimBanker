@@ -12,7 +12,7 @@ define([
     return Backbone.View.extend({
 
         initialize: function(){
-            
+
             this.mortgageViews = [];
 
             this.collection = new MortgageCollection();
@@ -24,11 +24,12 @@ define([
 
         render: function(){
             var self = this;
+            this.$el.empty();
             this.main = mortgageInventoryTemplate();
             this.$el.append(this.main);
             this.main.empty();
             _(this.mortgageViews).each(function(mv) {
-              self.main.append(mv.render().el);
+                self.main.append(mv.render().$el);
             });
  
             return this;
@@ -41,7 +42,8 @@ define([
         },
 
         remove: function(mortgage) {
-            var viewToRemove = _(this.  mortgageViews).select(
+            console.log("REMOVE");
+            var viewToRemove = _(this.mortgageViews).select(
                 function(mv) { 
                     return mv.model === mortgage; 
                 })[0];
@@ -49,6 +51,7 @@ define([
             this.mortgageViews = _(this.mortgageViews).without(viewToRemove);
 
             $(viewToRemove.el).remove();
+            this.render();
         }
 
     });

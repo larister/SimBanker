@@ -40,7 +40,7 @@ define([
             this.mortgageInventoryView = new MortgageInventoryView();
             this.cdoInventoryView = new CDOInventoryView({
                 banker: this.banker,
-                mortgageInventory: this.mortgageInventoryView.collection
+                mortgagesInventory: this.mortgageInventoryView.collection
             });
 
             this.bankerView = new BankerView({

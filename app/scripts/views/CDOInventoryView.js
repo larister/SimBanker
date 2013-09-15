@@ -11,7 +11,11 @@ define([
 
     return Backbone.View.extend({
 
-        initialize: function(){
+        initialize: function(options){
+
+            console.log(this.options);
+            this.banker = options.banker;
+            this.mortgagesInventory = options.mortgagesInventory;
 
             this.cdoViews = [];
 
@@ -21,8 +25,7 @@ define([
             this.listenTo(this.collection, 'remove', this.remove);
             this.tpl = cdoInventoryTemplate();
             this.main = this.tpl.find('#cdoi-main');
-            this.buyButton = this.tpl.find('#buy-cdo');
-            this.listenTo(this.buyButton, 'click', this.buyCDO);
+
         },
 
         render: function(){
@@ -34,13 +37,18 @@ define([
             _(this.cdoViews).each(function(mv) {
               self.main.append(mv.render().el);
             });
+            
+            this.$el.on('click', '#buy-cdo', _(this.buyCDO).bind(this));
+
             return this;
         },
 
         add: function(cdo) {
             var m = new CDOView({ model: cdo });
             this.cdoViews.push(m);
+
             this.main.append(m.render().$el);
+            console.log(m.$el);
         },
 
         remove: function(cdo) {
@@ -55,10 +63,12 @@ define([
         },
 
         buyCDO: function() {
-            if (this.banker.amount > 1000 && this.mortgagesInventory.count() > 10) {
-                this.banker.amount -= 1000;
+            console.log(this);
+            console.log("BUY");
+            if (this.banker.amount >= 10 && this.mortgagesInventory.length >= 3) {
+                this.banker.amount -= 3;
                 var ms = [];
-                for (var i = 0; i < 10; i++) {
+                for (var i = 0; i < 3; i++) {
                     ms.push(this.mortgagesInventory.pop());
                 };
 
