@@ -1,1 +1,1 @@
-<p>{{ headline }} <br/> <i>"{{ summary }}"</i> <br/> <b>~{{ author }}</b></p>
+<div class="news-item"><p>{{ Headline }} <br/> <i>"{{ Summary }}"</i> <br/> <b>~{{ Author }}</b></p></div>

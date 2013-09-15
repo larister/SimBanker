@@ -81,15 +81,19 @@ define([
         },
 
         setIncomeTimer: function(){
+            setTimeout(_(function() {
+                this.banker.amount += this.income.increment;
+                this.bankerView.updateCalculatorDisplay();
 
+                this.setIncomeTimer();
+            }).bind(this), 1000);
         },
 
         onBoughtMortgage: function(type){
             var mortgageModel = MortgageHelper.createModel(type);
 
-            this.banker.amount += mortgageModel.get('valuation');
-
-            this.bankerView.updateCalculatorDisplay();
+            this.income.increment += mortgageModel.get('valuation');
+            this.incomeView.updateIncomeIncrement();
 
             this.mortgageInventoryView.collection.add(mortgageModel);
         }
