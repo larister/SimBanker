@@ -1,1 +1,5 @@
-<div class="inv-main"></div>
+<div class="inv-main">
+	<div id="safe" class="investorHolder"></div>
+	<div id="med" class="investorHolder"></div>
+	<div id="high" class="investorHolder"></div>
+</div>

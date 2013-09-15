@@ -59,7 +59,28 @@ body {
 
 .inv-main {
     position: absolute;
-    height:15%;
+    top: 0;
+    right: 0;
+    width: 150px;
+    height:600px;
+    overflow: hidden;
+}
+
+.investorHolder {
+    position: relative;
+    left:0px;
+    width:150px;
+    height:195px;
+    margin-bottom: 5px;
+    overflow: hidden;
+}
+
+.investor {
+    position: relative;
+    left:300px;
+    width:150px;
+    height:195px;
+    overflow: hidden;
 }
 
 #mmv-main {
@@ -145,17 +166,6 @@ body {
 
 .mortgage {
     float: left;
-}
-
-.investors {
-    float: left;
-    height: 100%;
-}
-
-.investor {
-    position: relative;
-    left: 300px;
-    cursor: pointer;
 }
 
 #buy-cdo {
