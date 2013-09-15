@@ -39,17 +39,17 @@ body {
 }
 
 .news-ticker {
-    color: #FFF;
+    color: #C3503F;
     background-repeat: no-repeat;
     background-size: 100%;
     float: left;
     top: 0;
     width: 55%;
-    height: 15%;
     overflow: hidden;
 }
 
 .breaking-news {
+    color: #FFF;
     background-color: #C3503F;
     text-transform:uppercase;
     font-weight: bold;
@@ -58,10 +58,10 @@ body {
 }
 
 .news-item > p {
-    margin:0;
+    margin:0px;
     padding:5px 10px;
-    background-color: #DDD;
-    height: 120px;
+    border: 2px solid #DDD;
+    height: 60px;
 }
 
 .headline {
@@ -69,14 +69,14 @@ body {
 }
 
 .summary {
-    font-style:italic;
-    font-size:0.875em;;
+    font-style: italic;
+    font-size: 0.875em;;
 }
 
 .author {
     text-align: right;
     font-weight: bold;
-    font-size:0.8em;
+    font-size: 0.8em;
 }
 
 .news-item-author {
