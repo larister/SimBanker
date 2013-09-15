@@ -40,8 +40,8 @@ define([
         houseClicked: function(event){
             var house = $(event.target).closest('.house');
 
-            this.trigger('boughtMortgage', house.data('type'));
-            house.remove();
+            this.trigger('boughtMortgage', house);
+            //house.remove();
         },
 
         removeHouse: function(house) {

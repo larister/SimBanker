@@ -31,6 +31,7 @@ define([
             console.log(options);
             this.banker = options.banker;
             this.spawnHelper = options.spawnHelper;
+            this.loanHelper = options.loanHelper;
             this.upgradesUnlocked = {};
         },
 
@@ -41,6 +42,18 @@ define([
 
         updateResearchPanel: function() {
             var self = this;
+
+
+            if(this.banker.amount < 1000 && this.$('.research-container').find('#loan').length == 0) {
+                this.$('.research-container').append(researchTemplate({research: "loan"}));
+                $('#loan').on('click', function() {
+                    self.banker.amount += self.loanHelper.getLoan();
+                    $(this).off('click');
+                    $(this).remove();
+                });
+            }
+
+
             if (this.banker.amount >= 10000 && !this.upgradesUnlocked.subprime) {
                 console.log("UNLOCKED SUB_PRIME");
                 this.upgradesUnlocked.subprime = true;

@@ -17,7 +17,7 @@ define([
         },
 
         updateIncomeIncrement: function(){
-            this.$('.income-increment').html(this.income.increment);
+            this.$('.income-increment').html(this.income.increment - this.income.loan);
         }
 
     });

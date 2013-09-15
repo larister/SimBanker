@@ -7,7 +7,8 @@ define([
     'views/BankerView',
     'views/InvestorsView',
     'helpers/MortgageHelper',
-    'mustache!base'
+    'mustache!base',
+    'helpers/LoanHelper'
 ], function(
     MortgageMarketView,
     NewsTickerView,
@@ -17,7 +18,8 @@ define([
     BankerView,
     InvestorsView,
     MortgageHelper,
-    baseTemplate
+    baseTemplate,
+    LoanHelper
 ) {
     'use strict';
 
@@ -30,8 +32,11 @@ define([
             };
 
             this.income = {
-                increment: 0
+                increment: 0,
+                loan: 0
             };
+
+            this.loanHelper = new LoanHelper();
 
 
             this.mortgageMarketView = new MortgageMarketView();
@@ -45,7 +50,8 @@ define([
 
             this.bankerView = new BankerView({
                 banker: this.banker,
-                spawnHelper: this.mortgageMarketView.spawnHelper
+                spawnHelper: this.mortgageMarketView.spawnHelper,
+                loanHelper: this.loanHelper
             });
             this.incomeView = new IncomeView({
                 income: this.income
@@ -59,6 +65,7 @@ define([
             this.listenTo(this.mortgageMarketView, 'boughtMortgage', this.onBoughtMortgage);
             this.listenTo(this.bankerView, 'broughtUpgrade', this.onBroughtUpgrade);
             this.listenTo(this.investorView, 'soldCDO', this.onSoldCDO);
+            this.listenTo(this.bankerView, 'gotLoan', this.onGotLoan);
         },
 
         render: function(){
@@ -97,7 +104,12 @@ define([
         },
 
         onTick: function(){
-            this.banker.amount += this.income.increment;
+
+            this.income.loan = this.loanHelper.getPayment();
+
+            this.incomeView.updateIncomeIncrement();
+
+            this.banker.amount += (this.income.increment - this.income.loan);
 
             this.bankerView.updateBankerImage();
             this.bankerView.updateCalculatorDisplay();
@@ -106,14 +118,25 @@ define([
             this.setTicker();
         },
 
-        onBoughtMortgage: function(type){
+        onBoughtMortgage: function(mortgage){
+
+            var type = mortgage.data('type');
             var mortgageModel = MortgageHelper.createModel(type);
+            var worth =  mortgageModel.get('valuation') * 500
+            if (this.banker.amount > worth) {
 
-            this.income.increment += mortgageModel.get('valuation');
-            this.incomeView.updateIncomeIncrement();
+                this.banker.amount -= worth;
+                this.income.increment += mortgageModel.get('valuation');
+                this.incomeView.updateIncomeIncrement();
 
-            this.mortgageInventoryView.collection.add(mortgageModel);
+                this.mortgageInventoryView.collection.add(mortgageModel);                
+                mortgage.remove();
+            }else {
+                console.log("NO");
+            }
+
         },
+
 
         onBroughtUpgrade: function(upgrade) {
             if (upgrade == "sub-prime") {
