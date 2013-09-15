@@ -12,9 +12,10 @@ define([
     return Backbone.View.extend({
 
         initialize: function(options){
-            this.lowRiskVisible = false;
-            this.medRiskVisible = false;
-            this.highRiskVisible = false;
+            this.investorStatus = {};
+            this.investorStatus.low = false;
+            this.investorStatus.med = false;
+            this.investorStatus.high = false;
             
             this.investorHelper = new InvestorDemandHelper();
             this.cdoInventory = options.cdoInventory;
@@ -28,58 +29,40 @@ define([
 
         investorsAppear: function(investorType){
             self=this;
-            if(!this.getFlag(investorType)) {
+            if(!this.investorStatus[investorType]) {
                 var v = this.$('#'+investorType);
                 var investor = investorTemplate({type: investorType});
                 $(investor).on("click",function() {
-                                self.sellCDO();
-                            })
+                    self.sellCDO();
+                    self.investorsDisappear();
+                })
                 v.append(investor);
                 this.moveLeft(investor);
             }
         },
 
+        investorsDisappear: function(investorType){
+            for (var type in this.investorStatus) {
+                if(this.investorStatus[type]) {
+                    var inv = this.$('#'+type);
+                    this.moveRight(inv);
+                }
+            }
+        },        
+
         moveLeft: function(investor){
-            this.setFlag(investor.attr('data-type'), true);
+            this.investorStatus[investor.attr('data-type')] = true;
             investor.animate({left: '0px'}, 4000);
-            var self = this;
-            setTimeout(function() {
-                self.moveRight(investor);
-            }, 3000);
         },
 
-        moveRight: function(investor){
+        moveRight: function(investorHolder){
+            var investor = jQuery(investorHolder).find('.investor');
+            var self = this;
             var boundInvestorRemove = _(investor.remove).bind(investor);
             investor.animate({left: '300px'}, 4000, function(){
+                self.investorStatus[investor.attr('data-type')] = false;
                 boundInvestorRemove();
             });
-            this.setFlag(investor.attr('data-type'), false);
-        },
-
-        setFlag: function(investorType, flag) {
-            switch(investorType)
-            {
-                case 'low':
-                  this.lowRiskVisible = flag;
-                  break;
-                case 'med':
-                  this.medRiskVisible = flag;
-                  break;
-                case 'high':
-                  this.highRiskVisible = flag;
-            }
-        },
-
-        getFlag: function(investorType) {
-            switch(investorType)
-            {
-                case 'low':
-                  return this.lowRiskVisible;
-                case 'med':
-                  return this.medRiskVisible;
-                case 'high':
-                  return this.highRiskVisible;
-            }
         },
 
         sellCDO: function() {
