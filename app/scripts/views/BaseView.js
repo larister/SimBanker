@@ -36,11 +36,11 @@ define([
 
             this.mortgageMarketView = new MortgageMarketView();
             this.newsTickerView = new NewsTickerView();
-            this.investorView = new InvestorsView();
+            
             this.mortgageInventoryView = new MortgageInventoryView();
             this.cdoInventoryView = new CDOInventoryView({
                 banker: this.banker,
-                mortgageInventory: this.mortgageInventoryView.collection
+                mortgagesInventory: this.mortgageInventoryView.collection
             });
 
             this.bankerView = new BankerView({
@@ -48,6 +48,11 @@ define([
             });
             this.incomeView = new IncomeView({
                 income: this.income
+            });
+
+            this.investorView = new InvestorsView({
+                cdoInventory: this.cdoInventoryView.collection,
+                banker: this.banker
             });
 
             this.listenTo(this.mortgageMarketView, 'boughtMortgage', this.onBoughtMortgage);
@@ -77,16 +82,24 @@ define([
             this.investorView.$el = this.$('.investors');
             this.investorView.render();
 
-            this.setIncomeTimer();
+            this.setTicker();
         },
 
-        setIncomeTimer: function(){
-            setTimeout(_(function() {
-                this.banker.amount += this.income.increment;
-                this.bankerView.updateCalculatorDisplay();
+        setTicker: function(){
+            if(this.ticker){
+                clearTimeout(this.ticker);
+            }
 
-                this.setIncomeTimer();
-            }).bind(this), 1000);
+            this.ticker = setTimeout(_(this.onTick).bind(this), 1000);
+        },
+
+        onTick: function(){
+            this.banker.amount += this.income.increment;
+
+            this.bankerView.updateBankerImage();
+            this.bankerView.updateCalculatorDisplay();
+
+            this.setTicker();
         },
 
         onBoughtMortgage: function(type){

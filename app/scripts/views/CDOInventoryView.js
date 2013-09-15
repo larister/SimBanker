@@ -11,7 +11,11 @@ define([
 
     return Backbone.View.extend({
 
-        initialize: function(){
+        initialize: function(options){
+
+            console.log(this.options);
+            this.banker = options.banker;
+            this.mortgagesInventory = options.mortgagesInventory;
 
             this.cdoViews = [];
 
@@ -21,26 +25,36 @@ define([
             this.listenTo(this.collection, 'remove', this.remove);
             this.tpl = cdoInventoryTemplate();
             this.main = this.tpl.find('#cdoi-main');
-            this.buyButton = this.tpl.find('#buy-cdo');
-            this.listenTo(this.buyButton, 'click', this.buyCDO);
+
         },
 
         render: function(){
+
             var self = this;
             this.$el.empty();
-            this.$el.append(this.tpl);
-            
+            this.main = cdoInventoryTemplate();
+            this.$el.append(this.main);
+            this.main = this.main.find('#cdoi-main');
             this.main.empty();
-            _(this.cdoViews).each(function(mv) {
-              self.main.append(mv.render().el);
+            _(this.cdoViews).each(function(cdov) {
+                self.main.append(cdov.render().$el);
             });
+
+
+            //hack
+            this.$el.off('click', '#buy-cdo');
+
+            this.$el.on('click', '#buy-cdo', _(this.buyCDO).bind(this));
+ 
             return this;
+
         },
 
         add: function(cdo) {
             var m = new CDOView({ model: cdo });
             this.cdoViews.push(m);
-            this.main.append(m.render().$el);
+
+            $('#cdoi-main').append(m.render().$el); // DON'T KNOW WHY this.main DOESN'T WORK HERE
         },
 
         remove: function(cdo) {
@@ -52,13 +66,14 @@ define([
             this.cdoViews = _(this.cdoViews).without(viewToRemove);
 
             $(viewToRemove.el).remove();
+            this.render();
         },
 
         buyCDO: function() {
-            if (this.banker.amount > 1000 && this.mortgagesInventory.count() > 10) {
-                this.banker.amount -= 1000;
+            if (this.banker.amount >= 10 && this.mortgagesInventory.length >= 3) {
+                this.banker.amount -= 3;
                 var ms = [];
-                for (var i = 0; i < 10; i++) {
+                for (var i = 0; i < 3; i++) {
                     ms.push(this.mortgagesInventory.pop());
                 };
 

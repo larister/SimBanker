@@ -11,12 +11,14 @@ define([
 
     return Backbone.View.extend({
 
-        initialize: function(){
+        initialize: function(options){
             this.lowRiskVisible = false;
             this.medRiskVisible = false;
             this.highRiskVisible = false;
             
             this.investorHelper = new InvestorDemandHelper();
+            this.cdoInventory = options.cdoInventory;
+            this.banker = options.banker;
             this.listenTo(this.investorHelper, 'triggerVisit', _(this.investorsAppear).bind(this));
         },
 
@@ -28,6 +30,9 @@ define([
             if(!this.getFlag(investorType)) {
                 var v = this.$('#'+investorType);
                 var investor = investorTemplate({type: investorType});
+$(investor).on("click",function() {
+                self.sellCDO();
+            })
                 v.append(investor);
                 this.moveLeft(investor);
             }
@@ -74,6 +79,23 @@ define([
                 case 'high':
                   return this.highRiskVisible;
             }
+        },
+
+        sellCDO: function() {
+            var profit = 0;
+            var self = this;
+            this.cdoInventory.forEach(function(cdo) {
+                _.forEach(cdo.get("mortgages"), function(mortgage) {
+                    profit += mortgage.get("valuation") * 1000;
+                });
+                self.cdoInventory.remove(cdo);
+            });
+
+            //should use this. but want remove event to fire
+            //this.cdoInventory.reset();
+
+            this.banker.amount += profit;
+
         }
 
     });
