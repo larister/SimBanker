@@ -60,6 +60,7 @@ define([
                 _.forEach(cdo.get("mortgages"), function(mortgage) {
                     profit += mortgage.get("valuation") * 1000;
                 });
+                self.trigger('soldCDO', cdo);
                 self.cdoInventory.remove(cdo);
             });
 
@@ -67,6 +68,7 @@ define([
             //this.cdoInventory.reset();
 
             this.banker.amount += profit;
+
 
         }
 

@@ -44,7 +44,8 @@ define([
             });
 
             this.bankerView = new BankerView({
-                banker: this.banker
+                banker: this.banker,
+                spawnHelper: this.mortgageMarketView.spawnHelper
             });
             this.incomeView = new IncomeView({
                 income: this.income
@@ -56,6 +57,8 @@ define([
             });
 
             this.listenTo(this.mortgageMarketView, 'boughtMortgage', this.onBoughtMortgage);
+            this.listenTo(this.bankerView, 'broughtUpgrade', this.onBroughtUpgrade);
+            this.listenTo(this.investorView, 'soldCDO', this.onSoldCDO);
         },
 
         render: function(){
@@ -98,6 +101,7 @@ define([
 
             this.bankerView.updateBankerImage();
             this.bankerView.updateCalculatorDisplay();
+            this.bankerView.updateResearchPanel();
 
             this.setTicker();
         },
@@ -109,6 +113,29 @@ define([
             this.incomeView.updateIncomeIncrement();
 
             this.mortgageInventoryView.collection.add(mortgageModel);
+        },
+
+        onBroughtUpgrade: function(upgrade) {
+            if (upgrade == "sub-prime") {
+
+            };
+        },
+
+        onSoldCDO: function(cdo) {
+
+
+            var total = 0;
+
+            console.log(cdo.get('mortgages'));
+
+            _.each(cdo.get('mortgages'), function(m) {
+                total += m.get('valuation');
+
+            });
+
+
+            this.income.increment -= total;
+            this.incomeView.updateIncomeIncrement();
         }
 
     });

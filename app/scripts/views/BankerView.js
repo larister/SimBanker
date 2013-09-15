@@ -1,7 +1,9 @@
 define([
-    'mustache!banker'
+    'mustache!banker',
+    'mustache!research'
 ], function(
-    bankerTemplate
+    bankerTemplate,
+    researchTemplate
 ){
     'use strict';
 
@@ -26,12 +28,29 @@ define([
     return Backbone.View.extend({
 
         initialize: function(options){
+            console.log(options);
             this.banker = options.banker;
+            this.spawnHelper = options.spawnHelper;
+            this.upgradesUnlocked = {};
         },
 
         render: function(){
             this.$el.append(bankerTemplate());
             this.updateCalculatorDisplay();
+        },
+
+        updateResearchPanel: function() {
+            var self = this;
+            if (this.banker.amount >= 10000 && !this.upgradesUnlocked.subprime) {
+                console.log("UNLOCKED SUB_PRIME");
+                this.upgradesUnlocked.subprime = true;
+                this.$('.research-container').append(researchTemplate({research: "sub-prime"}));
+                $('#sub-prime').on('click', function() {
+                    self.spawnHelper.addBroker();
+                    $(this).off('click');
+                    $(this).remove();
+                });
+            }
         },
 
         updateCalculatorDisplay: function(){
