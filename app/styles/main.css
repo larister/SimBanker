@@ -40,8 +40,9 @@ body {
 
 .news-ticker {
     padding: 0px 20px 15px;
-    border: 1px dashed red;
+    border: 10px groove red;
     color: #FFF;
+    background-color: blue;
     float: left;
     top: 0;
     width: 55%;
