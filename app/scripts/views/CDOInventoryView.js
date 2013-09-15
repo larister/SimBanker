@@ -13,7 +13,6 @@ define([
 
         initialize: function(options){
 
-            console.log(this.options);
             this.banker = options.banker;
             this.mortgagesInventory = options.mortgagesInventory;
 
@@ -76,10 +75,7 @@ define([
                 for (var i = 0; i < 3; i++) {
                     ms.push(this.mortgagesInventory.pop());
                 };
-
                 this.collection.add({mortgages: ms});
-            } else {
-                console.log("NO");
             }
         }
 

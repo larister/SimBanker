@@ -123,17 +123,12 @@ define([
 
         onSoldCDO: function(cdo) {
 
-
             var total = 0;
-
-            console.log(cdo.get('mortgages'));
 
             _.each(cdo.get('mortgages'), function(m) {
                 total += m.get('valuation');
 
             });
-
-
             this.income.increment -= total;
             this.incomeView.updateIncomeIncrement();
         }

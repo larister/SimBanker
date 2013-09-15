@@ -12,7 +12,6 @@ define([
 
         render: function(){
             this.$el = cdoTemplate();
-            console.log("RENDER");
             return this;
         }
 

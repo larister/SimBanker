@@ -40,7 +40,7 @@ body {
 
 .news-ticker {
     padding: 0px 20px 15px;
-    background-color: #666;
+    border: 1px dashed red;
     color: #FFF;
     float: left;
     top: 0;
@@ -49,7 +49,7 @@ body {
     overflow: hidden;
 }
 
-.news-update > p {
+.news-item > p {
     margin: 0;
 }
 
@@ -113,7 +113,8 @@ body {
     width: 100%;
     height: 50%;
     background-color: red;
-    overflow: scroll;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .mortgage-inventory .mortgage {
@@ -174,4 +175,18 @@ body {
 
 .cdo-inventory {
     height:50%;
+    width: 100%;
+    float: left;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.cdo {
+    float: left;
+}
+
+
+.button {
+    border: 1px solid black;
+    text-align: center;
 }

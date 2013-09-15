@@ -85,7 +85,9 @@ define([
         sellCDO: function() {
             var profit = 0;
             var self = this;
-            this.cdoInventory.forEach(function(cdo) {
+            var cdos = this.cdoInventory.clone();
+
+            cdos.forEach(function(cdo) {
                 _.forEach(cdo.get("mortgages"), function(mortgage) {
                     profit += mortgage.get("valuation") * 1000;
                 });

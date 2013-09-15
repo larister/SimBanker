@@ -42,7 +42,6 @@ define([
         },
 
         remove: function(mortgage) {
-            console.log("REMOVE");
             var viewToRemove = _(this.mortgageViews).select(
                 function(mv) { 
                     return mv.model === mortgage; 
