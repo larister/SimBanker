@@ -25,30 +25,28 @@ define([
         updateTicker: function(){
             this.age++;
             //if avgHousePrice >= item.housePrice pop item from array and display in newsItem template
-            var nextNewsItem;
-            for (var i=0;i<this.items.length;i++) {
-                nextNewsItem = this.items[i];
-                this.items.splice(i, 1);
-                break;
-            }
+            var nextNewsItem = this.items[this.age % this.items.length];
 
             var self = this;
             var v = this.$el.find('.news-update');
 
-            var newsItem = newsItemTemplate({headline: nextNewsItem.Headline, summary: nextNewsItem.Summary, author: nextNewsItem.Author});
+            var newsItem = newsItemTemplate(nextNewsItem);
 
             window.setTimeout(function() {
                 self.removeNewsItem(newsItem);
-            }, 20000);
+            }, 1000);
 
             v.append(newsItem);
-            newsItem.animate({opacity: 1}, 100);
+            newsItem.animate({opacity: 1}, 200);
         },
 
         removeNewsItem: function(newsItem) {
-            newsItem.animate({opacity: 0}, 100);
-            newsItem.remove();
-            this.updateTicker();//this isn't how updates will work eventually
+            var boundUpdateTicker = _(this.updateTicker).bind(this);
+
+            newsItem.animate({opacity: 0}, 200, function(){
+                newsItem.remove();
+                boundUpdateTicker(); //this isn't how updates will work eventually
+            });
         }
 
     });
