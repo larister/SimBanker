@@ -1,12 +1,15 @@
-	<div class="news-item">
-		<p>
-			<span class="headline">{{ Headline }}</span> 
-			<br/> 
-			<span class="summary">"{{ Summary }}"</span> 
-		</p>
-	</div>
-	<div class="news-item-author">
-		<p> 
-			<span class="author">~{{ Author }}</span>
-		</p>
-	</div>
+<div class="breaking-news">
+	Breaking News
+</div>
+<div class="news-item">
+	<p>
+		<span class="headline">{{ Headline }}</span> 
+		<br/> 
+		<span class="summary">"{{ Summary }}"</span> 
+	</p>
+</div>
+<div class="news-item-author">
+	<p> 
+		<span class="author">~{{ Author }}</span>
+	</p>
+</div>

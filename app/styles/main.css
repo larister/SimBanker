@@ -51,6 +51,11 @@ body {
     overflow: hidden;
 }
 
+.breaking-news {
+    background-color: #FF8972;
+    text-transform:uppercase;
+}
+
 .news-item > p {
     width: 90%;
 }
