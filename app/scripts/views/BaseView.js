@@ -51,7 +51,8 @@ define([
             });
 
             this.investorView = new InvestorsView({
-                cdoInventory: this.cdoInventoryView.collection
+                cdoInventory: this.cdoInventoryView.collection,
+                banker: this.banker
             });
 
             this.listenTo(this.mortgageMarketView, 'boughtMortgage', this.onBoughtMortgage);

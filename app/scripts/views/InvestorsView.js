@@ -14,6 +14,7 @@ define([
         initialize: function(options){
             this.investorHelper = new InvestorDemandHelper();
             this.cdoInventory = options.cdoInventory;
+            this.banker = options.banker;
             this.listenTo(this.investorHelper, 'triggerVisit', _(this.investorsAppear).bind(this));
         },
 
@@ -53,10 +54,20 @@ define([
         },
 
         sellCDO: function() {
-            if(this.cdoInventory.length > 3) {
-                console.log("ENOUGH");
-            }
-            console.log("SELL CDO");
+            var profit = 0;
+            var self = this;
+            this.cdoInventory.forEach(function(cdo) {
+                _.forEach(cdo.get("mortgages"), function(mortgage) {
+                    profit += mortgage.get("valuation") * 1000;
+                });
+                self.cdoInventory.remove(cdo);
+            });
+
+            //should use this. but want remove event to fire
+            //this.cdoInventory.reset();
+
+            this.banker.amount += profit;
+
         }
 
     });
