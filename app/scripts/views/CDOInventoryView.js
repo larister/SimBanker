@@ -40,6 +40,10 @@ define([
                 self.main.append(cdov.render().$el);
             });
 
+
+            //hack
+            this.$el.off('click', '#buy-cdo');
+
             this.$el.on('click', '#buy-cdo', _(this.buyCDO).bind(this));
  
             return this;
