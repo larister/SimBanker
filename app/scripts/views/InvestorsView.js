@@ -29,16 +29,12 @@ define([
             this.moveLeft(investor);
         },
 
-        investorsDisappear: function() {
-
-        },
-
         moveLeft: function(investor){
             var self = this;
 
-            investor.animate({left: '0px'}, 2000);
+            investor.animate({left: '0px'}, 4000);
 
-            window.setTimeout(function() {
+            setTimeout(function() {
                 self.moveRight(investor);
             }, 3000);
         },
@@ -46,7 +42,7 @@ define([
         moveRight: function(investor){
             var boundInvestorRemove = _(investor.remove).bind(investor);
 
-            investor.animate({left: '110px'}, 2000, function(){
+            investor.animate({left: '300px'}, 4000, function(){
                 boundInvestorRemove();
             });
         }

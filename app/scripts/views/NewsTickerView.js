@@ -1,10 +1,10 @@
 define([
-	'text!json/headlines.json',
-	'mustache!newsItem',
+    'text!json/headlines.json',
+    'mustache!newsItem',
     'mustache!ticker'
 ], function(
-	headlines,
-	newsItemTemplate,
+    headlines,
+    newsItemTemplate,
     tickerTemplate
 ){
     'use strict';
@@ -12,9 +12,9 @@ define([
     return Backbone.View.extend({
 
         initialize: function(){
-        	this.age=0;
-        	//load in headlines.json into array
-        	this.items=JSON.parse(headlines);              
+            this.age=0;
+            //load in headlines.json into array
+            this.items=JSON.parse(headlines);
         },
 
         render: function(){
@@ -23,22 +23,22 @@ define([
         },
 
         updateTicker: function(){
-        	this.age++;
-        	//if avgHousePrice >= item.housePrice pop item from array and display in newsItem template
-        	var nextNewsItem;
-			for (var i=0;i<this.items.length;i++) {
-				nextNewsItem = this.items[i];
-				this.items.splice(i, 1);
-				break;
-			}
+            this.age++;
+            //if avgHousePrice >= item.housePrice pop item from array and display in newsItem template
+            var nextNewsItem;
+            for (var i=0;i<this.items.length;i++) {
+                nextNewsItem = this.items[i];
+                this.items.splice(i, 1);
+                break;
+            }
 
-        	var self = this;
+            var self = this;
             var v = this.$el.find('.news-update');
 
             var newsItem = newsItemTemplate({headline: nextNewsItem.Headline, summary: nextNewsItem.Summary, author: nextNewsItem.Author});
 
             window.setTimeout(function() {
-            	self.removeNewsItem(newsItem);
+                self.removeNewsItem(newsItem);
             }, 20000);
 
             v.append(newsItem);
@@ -53,5 +53,4 @@ define([
 
     });
 });
-		
-		
+

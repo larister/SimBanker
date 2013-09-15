@@ -38,11 +38,13 @@ body {
     margin: 0;
 }
 
+.news-item {
+    opacity: 0;
+}
+
 .inv-main {
     position: absolute;
-    right: 0;
     height:15%;
-    background-color: purple;
 }
 
 #mmv-main {
@@ -131,6 +133,11 @@ body {
 .investors {
     float: left;
     height: 100%;
+}
+
+.investor {
+    position: relative;
+    left: 300px;
 }
 
 #buy-cdo {
