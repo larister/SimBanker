@@ -24,10 +24,10 @@ define([
         showHouse: function(houseType){
             var self = this;
             var v = this.$('.view-main');
-            var left = (Math.random() * 80) + 10;
-            var top = (Math.random() * 80) + 10;
+            var left = (Math.random() * 60) + 20;
+            var top = (Math.random() * 60) + 20;
 
-            var house = houseTemplate({type: houseType, left: left - 5, top: top - 5});
+            var house = houseTemplate({type: houseType, left: left, top: top});
 
             window.setTimeout(function() {
                 self.removeHouse(house);

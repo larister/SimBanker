@@ -3,6 +3,10 @@ html {
 }
 
 body {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
     margin:0;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     height: 100%;
@@ -79,7 +83,7 @@ body {
 
 .house {
     position: absolute;
-    width: 40%;
+    width: 20%;
     opacity: 0;
     cursor: pointer;
 }
