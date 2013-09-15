@@ -24,8 +24,8 @@ define([
         showHouse: function(houseType){
             var self = this;
             var v = this.$('.view-main');
-            var left = (Math.random() * 60) + 20;
-            var top = (Math.random() * 60) + 20;
+            var left = (Math.random() * 80);
+            var top = (Math.random() * 100);
 
             var house = houseTemplate({type: houseType, left: left, top: top});
 
