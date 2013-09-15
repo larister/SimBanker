@@ -9,9 +9,9 @@ Disappearing altogether when house prices drop. */
         initialize: function(){
             this.investorVisits = 100;
             this.investorTypes = [
-                'SafeInvestor',
-                'OKInvestor',
-                'RiskyInvestor',
+                'low',
+                'med',
+                'high',
             ];
             window.setTimeout(_.bind(this.triggerVisit, this), this.nextVisitTime());
 
