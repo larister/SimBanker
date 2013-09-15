@@ -17,7 +17,7 @@ define([
         },
 
         nextSpawnTime: function() {
-            return this.brokers * Math.random() * 100;
+            return (Math.random() * 6000) /  this.brokers;
         },
 
         spawnMortgage: function(){
