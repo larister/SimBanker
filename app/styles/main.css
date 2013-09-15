@@ -81,6 +81,7 @@ body {
     width:150px;
     height:195px;
     overflow: hidden;
+    cursor: pointer;
 }
 
 #mmv-main {

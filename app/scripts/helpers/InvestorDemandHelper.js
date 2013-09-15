@@ -11,7 +11,7 @@ Disappearing altogether when house prices drop. */
             this.investorTypes = [
                 'low',
                 'med',
-                'high',
+                'high'
             ];
             window.setTimeout(_.bind(this.triggerVisit, this), this.nextVisitTime());
 
