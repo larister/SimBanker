@@ -1,21 +1,29 @@
 define([
     'models/MortgageModel'
-    ], 
-    function(
-        MortgageModel
-    ) {
+], function(
+    MortgageModel
+){
     'use strict';
 
     return Backbone.Collection.extend({
 
+        defaultChance: 0.5,
+
         model: MortgageModel,
 
-        initialize: function(){
-            
-        },
+        mortgageDefault: function(){
+            var randomIndex, randomMortgage;
 
-        render: function(){
+            if(this.isEmpty()){
+                return;
+            }
 
+            if(Math.random() < this.defaultChance){
+                randomIndex = Math.floor(Math.random() * this.length);
+                randomMortgage = this.at(randomIndex);
+                this.trigger('defaulted', randomMortgage.toJSON());
+                this.remove(randomMortgage);
+            }
         }
 
     });
