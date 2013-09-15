@@ -27,12 +27,13 @@ define([
         },
 
         investorsAppear: function(investorType){
+            self=this;
             if(!this.getFlag(investorType)) {
                 var v = this.$('#'+investorType);
                 var investor = investorTemplate({type: investorType});
-$(investor).on("click",function() {
-                self.sellCDO();
-            })
+                $(investor).on("click",function() {
+                                self.sellCDO();
+                            })
                 v.append(investor);
                 this.moveLeft(investor);
             }
