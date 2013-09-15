@@ -44,8 +44,9 @@ define([
         investorsDisappear: function(investorType){
             for (var type in this.investorStatus) {
                 if(this.investorStatus[type]) {
-                    var inv = this.$('#'+type);
-                    this.moveRight(inv);
+                    var investorHolder = this.$('#'+type);
+                    var investor = jQuery(investorHolder).find('.investor');
+                    this.moveRight(investor);
                 }
             }
         },        
@@ -53,10 +54,13 @@ define([
         moveLeft: function(investor){
             this.investorStatus[investor.attr('data-type')] = true;
             investor.animate({left: '0px'}, 4000);
+            self = this;
+            window.setTimeout(function() {
+                self.moveRight(investor);
+            }, 10000);
         },
 
-        moveRight: function(investorHolder){
-            var investor = jQuery(investorHolder).find('.investor');
+        moveRight: function(investor){
             var self = this;
             var boundInvestorRemove = _(investor.remove).bind(investor);
             investor.animate({left: '300px'}, 4000, function(){
