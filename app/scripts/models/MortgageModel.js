@@ -7,8 +7,8 @@ define([
 
     return Backbone.Model.extend({
 
-        initialize: function(){
-           
+        initialize: function(options){
+           this.mortgages = options.mortgages;
         },
 
 

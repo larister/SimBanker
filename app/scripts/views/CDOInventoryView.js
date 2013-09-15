@@ -29,26 +29,28 @@ define([
         },
 
         render: function(){
+
             var self = this;
             this.$el.empty();
-            this.$el.append(this.tpl);
-            
+            this.main = cdoInventoryTemplate();
+            this.$el.append(this.main);
+            this.main = this.main.find('#cdoi-main');
             this.main.empty();
-            _(this.cdoViews).each(function(mv) {
-              self.main.append(mv.render().el);
+            _(this.cdoViews).each(function(cdov) {
+                self.main.append(cdov.render().$el);
             });
-            
-            this.$el.on('click', '#buy-cdo', _(this.buyCDO).bind(this));
 
+            this.$el.on('click', '#buy-cdo', _(this.buyCDO).bind(this));
+ 
             return this;
+
         },
 
         add: function(cdo) {
             var m = new CDOView({ model: cdo });
             this.cdoViews.push(m);
 
-            this.main.append(m.render().$el);
-            console.log(m.$el);
+            $('#cdoi-main').append(m.render().$el); // DON'T KNOW WHY this.main DOESN'T WORK HERE
         },
 
         remove: function(cdo) {
@@ -63,8 +65,6 @@ define([
         },
 
         buyCDO: function() {
-            console.log(this);
-            console.log("BUY");
             if (this.banker.amount >= 10 && this.mortgagesInventory.length >= 3) {
                 this.banker.amount -= 3;
                 var ms = [];
