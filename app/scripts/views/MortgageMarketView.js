@@ -41,7 +41,7 @@ define([
             var house = $(event.target).closest('.house');
 
             this.trigger('boughtMortgage', house);
-            //house.remove();
+            house.remove();
         },
 
         removeHouse: function(house) {

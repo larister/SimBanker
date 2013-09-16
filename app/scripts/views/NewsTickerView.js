@@ -13,7 +13,6 @@ define([
 
         initialize: function(){
             this.age=0;
-            //load in headlines.json into array
             this.items=JSON.parse(headlines);
         },
 
@@ -26,7 +25,6 @@ define([
             this.age++;
             //if avgHousePrice >= item.housePrice pop item from array and display in newsItem template
             var nextNewsItem = this.items[this.age % this.items.length];
-            console.log(nextNewsItem);
             var newsItem = newsItemTemplate(nextNewsItem);
             var self = this;
             window.setTimeout(function() {
@@ -43,8 +41,9 @@ define([
 
             newsItem.animate({opacity: 0}, 200, function(){
                 newsItem.remove();
-                boundUpdateTicker(); //this isn't how updates will work eventually
             });
+
+            boundUpdateTicker(); //this isn't how updates will work eventually
         }
 
     });

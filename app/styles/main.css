@@ -39,20 +39,29 @@ body {
 }
 
 .news-ticker {
-    padding: 17px 20px 10px 15px;
-    color: #FFF;
-    background-image: url('../img/news.png');
+    color: #C3503F;
     background-repeat: no-repeat;
     background-size: 100%;
     float: left;
     top: 0;
     width: 55%;
-    height: 15%;
     overflow: hidden;
 }
 
+.breaking-news {
+    color: #FFF;
+    background-color: #C3503F;
+    text-transform:uppercase;
+    font-weight: bold;
+    width: 140px;
+    padding: 3px;
+}
+
 .news-item > p {
-    width: 90%;
+    margin:0px;
+    padding:5px 10px;
+    border: 2px solid #DDD;
+    height: 60px;
 }
 
 .headline {
@@ -60,20 +69,20 @@ body {
 }
 
 .summary {
-    font-style:italic;
-    font-size:0.875em;;
+    font-style: italic;
+    font-size: 0.875em;;
 }
 
 .author {
     text-align: right;
     font-weight: bold;
-    font-size:0.8em;;
+    font-size: 0.8em;
 }
 
 .news-item-author {
     position: absolute;
     top: 60px;
-    right: 410px;
+    right: 350px;
 }
 
 .inv-main {
