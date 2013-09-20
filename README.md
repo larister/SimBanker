@@ -7,8 +7,8 @@ Learn how to be a banker in the 21st century! Make your billions! But keep an ey
 
 ## Instructions
 
-1./ Clone repo
-2./ Install [bower](http://bower.io/)
-3./ Run `bower install`
-4./ ???
-5./ Profit
+1. Clone repo
+2. Install [bower](http://bower.io/)
+3. Run `bower install`
+4. ???
+5. Profit
